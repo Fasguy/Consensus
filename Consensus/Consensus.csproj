@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<LangVersion>9</LangVersion>
+		<Authors>Fasguy</Authors>
+		<Version>1.0.0</Version>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<Copyright>Fasguy</Copyright>
+		<Description>An add-on library for Harmony, that allows patching of enumerator methods.</Description>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/Fasguy/Consensus</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Fasguy/Consensus</RepositoryUrl>
+		<RepositoryType>Library</RepositoryType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>..\lib\0Harmony.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="..\LICENSE">
+			<LogicalName>LICENSE</LogicalName>
+			<Pack>True</Pack>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>
