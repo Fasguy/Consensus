@@ -14,7 +14,7 @@ namespace Consensus
 
 		private static readonly MethodInfo _patchClassTranspiler = AccessTools.Method(typeof(ConsensusPatcher), nameof(PatchClassTranspiler));
 		private static readonly MethodInfo _replaceIEnumeratorPatch = AccessTools.Method(typeof(ConsensusPatcher), nameof(ReplaceIEnumeratorPatch));
-		private static readonly MethodInfo _merge = AccessTools.Method(typeof(HarmonyMethod), nameof(HarmonyMethod.Merge));
+		private static readonly MethodInfo _merge = AccessTools.Method(typeof(HarmonyMethod), nameof(HarmonyMethod.Merge), new[] { typeof(List<HarmonyMethod>) });
 
 		public static void Patch(Harmony instance)
 		{
@@ -39,9 +39,9 @@ namespace Consensus
 			ConsensusAttribute consensusAttribute = type.GetCustomAttributes().FirstOrDefault(attr => attr is ConsensusAttribute) as ConsensusAttribute;
 
 			if (consensusAttribute == null) return harmonyMethod;
-			
+
 			MethodInfo methodInfo = AccessTools.Method(harmonyMethod.declaringType, harmonyMethod.methodName);
-			
+
 			harmonyMethod.declaringType = GetInternalType(methodInfo);
 			harmonyMethod.methodName = nameof(IEnumerator.MoveNext);
 			if (consensusAttribute.ToPatch == PatchEnumerator.Current)
