@@ -4,7 +4,7 @@ An add-on library for Harmony, that allows patching of enumerator methods.
 
 ## This library is obsolete
 
-Since Harmony v2.2.1.0, this library is no longer needed for patching `Enumerator`s.
+[Since Harmony v2.2.1.0](https://github.com/pardeike/Harmony/commit/bdd168f755a1a9eaf18d8948463077c2f16116e1), this library is no longer needed for patching `Enumerator`s.
 You can now specify a new `MethodType` in the `HarmonyPatch`-Attribute constructor to patch `Enumerator`s
 
 Example:
