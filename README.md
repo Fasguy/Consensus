@@ -1,11 +1,21 @@
-# Consensus
+# Consensus [obsolete]
 
 An add-on library for Harmony, that allows patching of enumerator methods.
 
+## This library is obsolete
+
+Since Harmony v2.2.1.0, this library is no longer needed for patching `Enumerator`s.
+You can now specify a new `MethodType` in the `HarmonyPatch`-Attribute constructor to patch `Enumerator`s
+
+Example:
+```cs
+[HarmonyPatch(typeof(ClassWithEnumeratorMethod), nameof(SomeEnumeratorMethod), MethodType.Enumerator)]
+```
+
 ### The problem
 
-One annoying limitation of Harmony, is that it currently does not support patching `IEnumerator` methods properly.
-`IEnumerator` methods are more complicated beneath the surface than they appear, as they just return an object of a hidden class which does all the work.
+One annoying limitation of Harmony, is that it currently does not support patching `Enumerator` methods properly.
+`Enumerator` methods are more complicated beneath the surface than they appear, as they just return an object of a hidden class which does all the work.
 
 
 ### The solution
